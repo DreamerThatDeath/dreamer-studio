@@ -707,5 +707,60 @@ if ("serviceWorker" in navigator) {
   });
 }
 </script>
+<script>
+let deferredInstallPrompt = null;
+
+const installButtons = [
+  document.getElementById("installBtn"),
+  document.getElementById("mobileInstallBtn")
+];
+
+function showInstallMessage(message) {
+  alert(message);
+}
+
+window.addEventListener("beforeinstallprompt", (event) => {
+  event.preventDefault();
+  deferredInstallPrompt = event;
+});
+
+async function installApp() {
+  if (deferredInstallPrompt) {
+    deferredInstallPrompt.prompt();
+
+    const result = await deferredInstallPrompt.userChoice;
+
+    if (result.outcome === "accepted") {
+      showInstallMessage("DREAMER STUDIO is being installed!");
+    }
+
+    deferredInstallPrompt = null;
+    return;
+  }
+
+  if (window.matchMedia("(display-mode: standalone)").matches) {
+    showInstallMessage("DREAMER STUDIO is already installed!");
+    return;
+  }
+
+  const isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent);
+
+  if (isIOS) {
+    showInstallMessage(
+      "To install DREAMER STUDIO:\n\n1. Tap the Share button in Safari.\n2. Select Add to Home Screen.\n3. Tap Add."
+    );
+  } else {
+    showInstallMessage(
+      "Installation is not available yet. Open this website in Chrome or Edge, then try again."
+    );
+  }
+}
+
+installButtons.forEach((button) => {
+  if (button) {
+    button.addEventListener("click", installApp);
+  }
+});
+</script>
 </body>
 </html>
