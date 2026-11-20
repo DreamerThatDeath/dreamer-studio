@@ -9,7 +9,7 @@
   "orientation": "any",
   "background_color": "#0b0712",
   "theme_color": "#10091b",
- "icons": [
+"icons": [
   {
     "src": "./DreamerStudio.png",
     "sizes": "192x192",
