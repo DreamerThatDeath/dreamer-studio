@@ -1,0 +1,20 @@
+
+{
+  "name": "DREAMER STUDIO",
+  "short_name": "Dreamer Studio",
+  "description": "Turning Ideas Into Digital Creations.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#0b0712",
+  "theme_color": "#10091b",
+  "icons": [
+    {
+      "src": "./DreamerStudio.png",
+      "sizes": "any",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}
