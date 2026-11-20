@@ -60,8 +60,30 @@
   transform:translateY(-2px);
 }
 
+/* Desktop: show install button */
+#installBtn{
+  display:inline-flex;
+}
+
 .mobile-install{
   display:none;
+}
+
+/* Mobile and tablet */
+@media(max-width:900px){
+  #installBtn{
+    display:none;
+  }
+
+  .mobile-install{
+    display:none;
+  }
+
+  .navlinks.open .mobile-install{
+    display:flex;
+    width:100%;
+    margin-top:7px;
+  }
 }
     section{padding:105px 0}
     .hero{min-height:760px;padding:155px 0 90px;display:flex;align-items:center;position:relative}
