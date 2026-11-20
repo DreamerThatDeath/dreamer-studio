@@ -1,5 +1,5 @@
 
-const CACHE_NAME = "dreamer-studio-v1";
+const CACHE_NAME = "dreamer-studio-v2";
 
 const APP_FILES = [
   "./",
