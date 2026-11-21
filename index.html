@@ -462,7 +462,8 @@
               <a class="contact-link" id="discordLink" href="#contact"><span>Discord</span><span>↗</span></a>
               <a class="contact-link" id="whatsappLink" href="#contact"><span>WhatsApp</span><span>↗</span></a>
               <a class="contact-link" id="emailLink" href="#contact"><span>Email</span><span>↗</span></a>
-              <a class="contact-link" id="socialLink" href="#contact"><span data-i18n="socialLabel">TikTok / Social</span><span>↗</span></a>
+              <a class="contact-link" id="socialLink" href="#contact" target="_blank" rel="noopener noreferrer"><span>TikTok</span><span>↗</span></a>
+              <a class="contact-link" id="instagramLink" href="#contact" target="_blank" rel="noopener noreferrer"><span>Instagram</span><span>↗</span></a>
             </div>
           </div>
           <div class="contact-card reveal">
@@ -474,7 +475,7 @@
                 <div class="field"><label for="clientContact" data-i18n="labelContact">Your contact</label><input id="clientContact" required placeholder="Discord / Email"></div>
                 <div class="field"><label for="serviceType" data-i18n="labelService">Service</label><select id="serviceType"><option value="Minecraft Development" data-i18n="optionMc">Minecraft Development</option><option value="Texture Pack Development" data-i18n="optionTexture">Texture Pack Development</option><option value="Website Development" data-i18n="optionWeb">Website Development</option><option value="Other / Not sure yet" data-i18n="optionOther">Other / Not sure yet</option></select></div>
                 <div class="field"><label for="market" data-i18n="labelMarket">Market</label><select id="market"><option value="Indonesia (IDR)" data-i18n="marketIDR">Indonesia (IDR)</option><option value="International (USD)" data-i18n="marketUSD">International (USD)</option></select></div>
-                <div class="field full"><label for="messageChannel" data-i18n="labelChannel">Send message through</label><select id="messageChannel" required><option value="" data-i18n="chooseChannel">Choose a platform</option><option value="discord">Discord</option><option value="whatsapp">WhatsApp</option><option value="tiktok">TikTok</option><option value="email">Email</option></select></div>
+                <div class="field full"><label for="messageChannel" data-i18n="labelChannel">Send message through</label><select id="messageChannel" required><option value="" data-i18n="chooseChannel">Choose a platform</option><option value="discord">Discord</option><option value="whatsapp">WhatsApp</option><option value="tiktok">TikTok</option><option value="instagram">Instagram</option><option value="email">Email</option></select></div>
                 <div class="field full"><label for="projectDetails" data-i18n="labelDetails">Project details</label><textarea id="projectDetails" required placeholder="Describe your idea, features, and requirements..."></textarea></div>
                 <div class="field full"><button class="btn btn-primary" type="submit" data-i18n="formSubmit">Order ↗</button></div>
               </div>
@@ -499,12 +500,14 @@
       discord: "https://discord.com/users/1339765244393951232",
       whatsapp: "https://wa.me/62895433278050",
       email: "mailto:dreamerthatdie@gmail.com",
-      social: "https://tiktok.com/@dreamerthatdeathtoo"
+      social: "https://tiktok.com/@dreamer.studio6",
+      instagram: "https://www.instagram.com/dreamerstudio0104?bqrl=MTM3YmNhOW5laGdxZQ=="
     };
     document.getElementById("discordLink").href = CONTACT.discord;
     document.getElementById("whatsappLink").href = CONTACT.whatsapp;
     document.getElementById("emailLink").href = CONTACT.email;
     document.getElementById("socialLink").href = CONTACT.social;
+    document.getElementById("instagramLink").href = CONTACT.instagram;
     document.getElementById("year").textContent = new Date().getFullYear();
 
     const prices = {
@@ -677,6 +680,7 @@
       if(data.channel==="discord") destination=CONTACT.discord;
       if(data.channel==="whatsapp") destination=`${CONTACT.whatsapp}?text=${encodeURIComponent(message)}`;
       if(data.channel==="tiktok") destination=CONTACT.social;
+      if(data.channel==="instagram") destination=CONTACT.instagram;
       if(data.channel==="email") destination=`mailto:dreamerthatdie@gmail.com?subject=${encodeURIComponent("DREAMER STUDIO - Commission Inquiry")}&body=${encodeURIComponent(message)}`;
 
       // Reserve the destination tab directly from the submit click so the browser does not block the delayed navigation.
