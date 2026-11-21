@@ -32,6 +32,7 @@
     .topbar{position:fixed;z-index:20;top:0;left:0;right:0;background:rgba(11,7,18,.76);backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}
     .nav{height:76px;display:flex;align-items:center;justify-content:space-between;gap:20px}
     .brand{display:inline-flex;align-items:center;gap:9px;font-family:'Space Grotesk',sans-serif;font-weight:700;white-space:nowrap;letter-spacing:0}
+    .brand-logo{width:43px;height:38px;object-fit:contain;filter:drop-shadow(0 0 10px rgba(155,92,255,.35))}
     .brand-name{display:inline-flex;align-items:baseline;gap:6px}
     .brand-main{color:#a66aff;font-size:1.3rem;font-weight:700;letter-spacing:-.045em}
     .brand-sub{color:#fff;font-size:.72rem;font-weight:700;letter-spacing:.025em}
@@ -266,7 +267,7 @@
 <body>
   <header class="topbar">
     <div class="container nav">
-      <a class="brand" href="#home" aria-label="Dreamer Studio"><span class="brand-name"><span class="brand-main">Dreamer</span><span class="brand-sub">Studio</span></span></a>
+      <a class="brand" href="#home" aria-label="Dreamer Studio"><img class="brand-logo" src="./DreamerStudio.png" alt="DREAMER STUDIO logo"><span class="brand-name"><span class="brand-main">Dreamer</span><span class="brand-sub">Studio</span></span></a>
       <nav class="navlinks" id="navlinks">
         <a href="#home" data-i18n="navHome">Home</a>
         <a href="#about" data-i18n="navAbout">About</a>
