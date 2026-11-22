@@ -496,6 +496,8 @@
 
   <script>
     // DREAMER STUDIO official contact links.
+    const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxBpZq-42mcArtCOj4Uvn7Qso2bQHci0tQfb5y7iIUIEZtUXnwpAVcdBpGU4XpAz3SznA/exec";
+
     const CONTACT = {
       discord: "https://discord.com/users/1339765244393951232",
       whatsapp: "https://wa.me/62895433278050",
@@ -689,6 +691,20 @@
         destinationWindow.document.open();
         destinationWindow.document.write(`<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>DREAMER STUDIO</title><style>body{margin:0;min-height:100vh;display:grid;place-items:center;background:#10091b;color:#f7f1ff;font:16px Arial,sans-serif;text-align:center}.box{padding:32px;max-width:420px}.count{font-size:42px;font-weight:700;color:#c29aff}</style></head><body><div class="box"><h2>DREAMER STUDIO</h2><p>${currentLang==="id"?"Menyiapkan kanal tujuan...":"Preparing your destination..."}</p><div class="count" id="count">5</div><p>${currentLang==="id"?"Halaman ini akan terbuka otomatis.":"The destination will open automatically."}</p></div></body></html>`);
         destinationWindow.document.close();
+      }
+
+      // Kirim data pesanan ke backend Google Apps Script.
+      let emailRequestStarted = false;
+      try {
+        await fetch(APPS_SCRIPT_URL, {
+          method: "POST",
+          mode: "no-cors",
+          headers: { "Content-Type": "text/plain;charset=utf-8" },
+          body: JSON.stringify(data)
+        });
+        emailRequestStarted = true;
+      } catch (error) {
+        console.error("Gagal mengirim pesanan ke backend:", error);
       }
 
       // Keep the existing copy attempt and fallback, then wait 5 seconds before navigating the reserved tab.
