@@ -815,12 +815,17 @@ const installButtons = [
 function isAppInstalled() {
   return window.matchMedia("(display-mode: standalone)").matches ||
     window.matchMedia("(display-mode: fullscreen)").matches ||
-    navigator.standalone === true;
+    window.matchMedia("(display-mode: window-controls-overlay)").matches ||
+    navigator.standalone === true ||
+    localStorage.getItem("dreamerStudioAppInstalled") === "true";
 }
 
 function updateInstallButtons() {
   if (isAppInstalled()) {
     document.body.classList.add("app-installed");
+    installButtons.forEach((button) => {
+      if (button) button.hidden = true;
+    });
   }
 }
 
@@ -830,7 +835,11 @@ function showInstallMessage(message) {
 
 updateInstallButtons();
 window.addEventListener("appinstalled", () => {
+  localStorage.setItem("dreamerStudioAppInstalled", "true");
   document.body.classList.add("app-installed");
+  installButtons.forEach((button) => {
+    if (button) button.hidden = true;
+  });
   deferredInstallPrompt = null;
 });
 
