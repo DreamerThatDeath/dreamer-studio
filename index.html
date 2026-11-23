@@ -834,6 +834,10 @@ function showInstallMessage(message) {
 }
 
 updateInstallButtons();
+window.addEventListener("pageshow", updateInstallButtons);
+document.addEventListener("visibilitychange", () => {
+  if (!document.hidden) updateInstallButtons();
+});
 window.addEventListener("appinstalled", () => {
   localStorage.setItem("dreamerStudioAppInstalled", "true");
   document.body.classList.add("app-installed");
