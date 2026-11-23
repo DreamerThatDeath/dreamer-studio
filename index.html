@@ -60,6 +60,12 @@
   transform:translateY(-2px);
 }
 
+/* Hide install options when DREAMER STUDIO is already installed */
+body.app-installed #installBtn,
+body.app-installed #mobileInstallBtn{
+  display:none !important;
+}
+
 /* Desktop: show install button */
 #installBtn{
   display:inline-flex;
@@ -806,9 +812,27 @@ const installButtons = [
   document.getElementById("mobileInstallBtn")
 ];
 
+function isAppInstalled() {
+  return window.matchMedia("(display-mode: standalone)").matches ||
+    window.matchMedia("(display-mode: fullscreen)").matches ||
+    navigator.standalone === true;
+}
+
+function updateInstallButtons() {
+  if (isAppInstalled()) {
+    document.body.classList.add("app-installed");
+  }
+}
+
 function showInstallMessage(message) {
   alert(message);
 }
+
+updateInstallButtons();
+window.addEventListener("appinstalled", () => {
+  document.body.classList.add("app-installed");
+  deferredInstallPrompt = null;
+});
 
 window.addEventListener("beforeinstallprompt", (event) => {
   event.preventDefault();
